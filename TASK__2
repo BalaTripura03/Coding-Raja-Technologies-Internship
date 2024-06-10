@@ -1,0 +1,48 @@
+# Simple Personal Budget Tracker
+
+# Function to add an entry
+def add_entry(entries, entry_type):
+    amount = float(input(f"Enter the amount for {entry_type}: "))
+    entries.append(amount)
+
+# Function to calculate the remaining budget
+def calculate_budget(income, expenses):
+    return sum(income) - sum(expenses)
+
+# Function to analyze expenses
+def analyze_expenses(expenses):
+    total_expenses = sum(expenses)
+    print(f"\nTotal Expenses: {total_expenses}")
+    for i, expense in enumerate(expenses, 1):
+        print(f"Expense {i}: {expense}")
+
+# Main function to run the budget tracker
+def main():
+    income = []
+    expenses = []
+
+    while True:
+        print("\nPersonal Budget Tracker")
+        print("1. Add Income")
+        print("2. Add Expense")
+        print("3. Calculate Remaining Budget")
+        print("4. Analyze Expenses")
+        print("5. Exit")
+        choice = input("Choose an option: ")
+
+        if choice == '1':
+            add_entry(income, 'income')
+        elif choice == '2':
+            add_entry(expenses, 'expense')
+        elif choice == '3':
+            budget = calculate_budget(income, expenses)
+            print(f"\nRemaining Budget: {budget}")
+        elif choice == '4':
+            analyze_expenses(expenses)
+        elif choice == '5':
+            break
+        else:
+            print("Invalid option, please try again.")
+
+if __name__ == "__main__":
+    main()
